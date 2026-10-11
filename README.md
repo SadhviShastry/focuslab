@@ -68,7 +68,7 @@ Your plant grows with your total XP, from a seed to full bloom.
 
 ### Admin Panel
 A built-in control panel for platform oversight, visible only to administrators:
-- Platform-wide statistics: users, total focus hours, active tasks and completed sessions
+- Platform wide statistics: users, total focus hours, active tasks and completed sessions
 - User management: search, change roles and delete accounts
 - Live activity log of signups, focus sessions, task completions, achievements and admin actions, with filtering and pagination
 - Announcement banner that broadcasts a message to every signed-in user

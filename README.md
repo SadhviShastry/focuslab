@@ -2,7 +2,7 @@
 
 **Experiment with your focus.**
 
-FocusLab is a calm,productivity app for students and self learners. Plan your day, run focus sessions, and watch a small garden grow as you build consistent habits. It is part task manager, part Pomodoro timer, and part personal lab where you can test what actually helps you concentrate.
+FocusLab is a productivity app where you can,Plan your day, run focus sessions, and watch a small garden grow as you build consistent habits. It is part task manager, part Pomodoro timer, and part personal lab where you can test what actually helps you concentrate.
 
 **Live app:** https://myfocuslab.netlify.app
 

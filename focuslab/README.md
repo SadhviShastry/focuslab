@@ -2,19 +2,42 @@
 
 **Experiment with your focus.**
 
-FocusLab is a productivity and focus-tracking web app: tasks, a Pomodoro timer, XP, streaks, a growing garden, focus experiments, insights, achievements, and an Admin Panel with an activity log.
+FocusLab is a calm,productivity app for students and self learners. Plan your day, run focus sessions, and watch a small garden grow as you build consistent habits. It is part task manager, part Pomodoro timer, and part personal lab where you can test what actually helps you concentrate.
 
-- **Frontend:** plain HTML, CSS and vanilla JavaScript (no framework, no build step for the app itself)
-- **Backend:** Supabase (PostgreSQL, Authentication, Row Level Security, Realtime)
-- **Hosting:** Netlify (static site)
+**Live app:** https://myfocuslab.netlify.app
 
-## How it works
+---
+
+## Why FocusLab
+
+Most productivity tools measure how much you do. FocusLab is built around how you work. Every session you finish adds to your streak, your XP and your garden, so progress feels visible even on slow days. Built in experiments let you compare session lengths using your own data, rather than trusting generic advice.
+
+The core loop:
 
 ```
-Create task -> add to Today -> start focus session -> timer completes -> session saved
--> +10 XP -> complete task -> +20 XP -> garden grows -> streak / goals / insights update
--> achievements unlock
+Create a task -> add it to Today -> start a focus session -> finish the timer
+-> session is saved -> earn XP -> complete the task -> your garden grows
+-> streaks, goals and insights update -> achievements unlock
 ```
+
+## Features
+
+### Focus Timer
+- Pomodoro timer with focus, short break and long break modes
+- Start, pause, resume, reset and skip controls
+- Durations and long-break cycle are customizable in Settings
+- Accurate even when the tab is in the background
+- Link each session to a task, then rate how focused you felt (1 to 5)
+- Sessions are saved only when the timer completes
+
+### Task Management
+- Create, edit, delete and complete tasks, stored securely per user
+- Priority (low, medium, high), due date, estimated sessions and description
+- "Today" planning with automatic roll-over of unfinished tasks
+- Filters for active, today, completed and all tasks
+- Live updates across tabs and devices
+
+### XP, Streaks and Daily Goals
 
 | Action | Reward |
 | --- | --- |
@@ -22,117 +45,88 @@ Create task -> add to Today -> start focus session -> timer completes -> session
 | Completed task (first time only) | +20 XP |
 | Daily focus goal reached | +25 XP |
 
-Garden stages by total XP: Seed (0), Sprout (50), Growing Plant (150), Mature Plant (300), Bloom (500).
+Streaks are calculated from your real completed sessions. Set your own daily focus goal in minutes.
 
-## Project structure
+### The Garden
+Your plant grows with your total XP, from a seed to full bloom.
+
+`Seed` -> `Sprout` -> `Growing Plant` -> `Mature Plant` -> `Bloom`
+
+### The Lab
+- **Garden:** your current stage, progress to the next one, and plants bloomed
+- **Experiments:** compare 25 vs 50 minute sessions, or design your own test with a hypothesis, two session lengths and a written conclusion
+- **Progress:** lifetime totals, completion rates, longest streak and a 30-day focus chart
+
+### Insights and Achievements
+- Weekly focus chart, time-of-day breakdown, task completion rate and average focus rating
+- 14 achievements that unlock automatically, such as First Focus, Task Finisher, Consistent, Week Warrior and In Bloom
+
+### Settings
+- Profile and password management
+- Timer and goal preferences
+- Light and dark themes
+
+### Admin Panel
+A built-in control panel for platform oversight, visible only to administrators:
+- Platform-wide statistics: users, total focus hours, active tasks and completed sessions
+- User management: search, change roles and delete accounts
+- Live activity log of signups, focus sessions, task completions, achievements and admin actions, with filtering and pagination
+- Announcement banner that broadcasts a message to every signed-in user
+
+## Design
+
+FocusLab aims to feel clean, academic and calm. Cream and sage backgrounds, deep forest greens, an editorial serif for headings, and line icons throughout.The interface is fully responsive and supports a dark mode.
+
+## Tech Stack
+
+| Layer | Technology |
+| --- | --- |
+| Frontend | HTML, CSS and vanilla JavaScript (no framework) |
+| Backend | Supabase |
+| Database | PostgreSQL |
+| Authentication | Supabase Auth |
+| Security | Row Level Security (RLS) |
+| Realtime | Supabase Realtime |
+| Hosting | Netlify |
+| Fonts and icons | Newsreader and Inter, inline SVG line icons |
+
+The codebase is intentionally small and readable: plain files, no build step for the app, and a shared helper module (`js/app.js`) used by every page.
+
+## Security and Privacy
+
+Your data belongs to you, and the database enforces it.
+
+- Row Level Security is enabled on every table. Users can only read and write their own tasks, sessions, goals, settings and achievements.
+- Roles cannot be self-assigned. A database trigger blocks users from changing their own role.
+- XP cannot be edited directly. It is added only through a server-side function with a per-call limit.
+- Admin features are checked inside the database, so they are refused for non-admins even if the endpoints are called directly.
+- Activity logs cannot be edited by anyone. Only admins can read all entries.
+- Only the public anon key is used in the browser. No secret keys are exposed.
+
+## Project Structure
 
 ```
 focuslab/
-├── index.html  login.html  signup.html
-├── dashboard.html  timer.html  tasks.html
-├── lab.html  garden.html  experiments.html  progress.html
-├── insights.html  achievements.html  settings.html  admin.html
-├── css/   style.css  responsive.css  auth.css  landing.css  dashboard.css
-│          timer.css  tasks.css  lab.css  admin.css
-├── js/    config.js  supabase.js  app.js  auth.js  dashboard.js  timer.js  tasks.js
-│          lab.js  garden.js  experiments.js  progress.js  insights.js
-│          achievements.js  settings.js  admin.js
-├── assets/logo.svg
-├── supabase/schema.sql
-├── build.js          (writes js/config.js from Netlify environment variables)
-├── netlify.toml
-└── README.md
+├── index.html, login.html, signup.html     public pages
+├── dashboard.html, timer.html, tasks.html  core app
+├── lab.html, garden.html, experiments.html, progress.html
+├── insights.html, achievements.html, settings.html
+├── admin.html                              administrators only
+├── css/                                    design tokens, layout and per-page styles
+├── js/                                     one script per page plus shared helpers
+├── assets/                                 logo
+└── supabase/schema.sql                     tables, security policies and functions
 ```
 
-`js/app.js` holds the shared helpers (page shell/sidebar, XP, streaks, achievements, icons, plant drawings). Each page has its own small script.
+## Database
 
-## 1. Set up Supabase
+Ten core tables: `profiles`, `tasks`, `focus_sessions`, `daily_goals`, `garden_progress`, `achievements`, `user_achievements`, `user_settings`, `experiments` and `activity_logs`, plus `announcements` for the admin banner. All use UUID keys with foreign-key relations and cascading deletes, so removing a user removes their data.
 
-1. Create a free project at <https://supabase.com>.
-2. Open **SQL Editor -> New query**, paste the whole of `supabase/schema.sql`, and click **Run**. This creates all tables, security policies, helper functions, realtime settings and the achievement list.
-3. Open **Project Settings -> API** and copy:
-   - **Project URL** (this is `SUPABASE_URL`)
-   - **anon public key** (this is `SUPABASE_ANON_KEY`)
-4. Open **Authentication -> Providers -> Email**. While testing you can turn **Confirm email** off so new accounts can log in immediately. If you leave it on, new users must click the email link first.
-5. Open **Authentication -> URL Configuration** and set **Site URL** to your Netlify address once you have it (also add `http://localhost:8000` for local testing).
 
-> Only ever use the **anon** key in this project. Never put the `service_role` key in front-end code. The anon key is meant to be public: your data is protected by Row Level Security.
+## Author
 
-## 2. Run locally
+Built by **Sadhvi Shastry**.
 
-Put your keys into `js/config.js`:
+## License
 
-```js
-window.FOCUSLAB_CONFIG = {
-  SUPABASE_URL: "https://xxxx.supabase.co",
-  SUPABASE_ANON_KEY: "your-anon-key"
-};
-```
-
-Then serve the folder with any static server, for example:
-
-```bash
-cd focuslab
-python3 -m http.server 8000
-# open http://localhost:8000
-```
-
-(Open it through `http://`, not by double-clicking the file, so login works.)
-
-Do not commit your real keys if you prefer to keep them out of GitHub. The Netlify build below replaces the file for you, so you can commit the placeholder version.
-
-## 3. Make yourself an admin
-
-1. Sign up in the app with your own email.
-2. In Supabase **SQL Editor**, run:
-
-```sql
-update public.profiles set role = 'admin' where email = 'you@example.com';
-```
-
-3. Refresh the app. An **Admin Panel** link appears in the sidebar.
-
-From the Admin Panel you can see platform stats, search users, change roles, delete users, read the global activity log, and publish a banner message that appears for every logged-in user.
-
-## 4. Deploy to Netlify
-
-1. Push the `focuslab` folder to a GitHub repository.
-2. In Netlify choose **Add new site -> Import an existing project** and pick the repository.
-3. Build settings are read from `netlify.toml`:
-   - Build command: `node build.js`
-   - Publish directory: `.`
-4. Before deploying, open **Site configuration -> Environment variables** and add:
-   - `SUPABASE_URL`
-   - `SUPABASE_ANON_KEY`
-5. Click **Deploy**. During the build, `build.js` writes `js/config.js` from those variables. If either variable is missing, the build fails with a clear message.
-6. Copy your Netlify URL into Supabase **Authentication -> URL Configuration -> Site URL**.
-
-## Security model (Row Level Security)
-
-All tables have RLS turned on, enforced by the database, not by the browser:
-
-- **Private user data** (`tasks`, `focus_sessions`, `daily_goals`, `garden_progress`, `experiments`, `user_settings`, `user_achievements`): a user can only read and write rows where `user_id` is their own id.
-- **`profiles`:** a user can read and update only their own row. A database trigger stops users from changing their own `role`, and from changing `xp` directly. XP is added only through the `add_xp()` function (max 50 per call).
-- **`activity_logs`:** users can add and read their own events. Admins can read everything and delete entries. Nobody can edit entries.
-- **`achievements`:** readable by everyone signed in, changeable only by admins.
-- **`announcements`:** everyone reads the active one, only admins can create or change them.
-- **Admin functions** (`admin_stats()`, `admin_delete_user()`) check `is_admin()` inside the database and refuse anyone else, even if they call the endpoint directly.
-
-The schema was tested on PostgreSQL by simulating a normal user and an admin: a user could not promote themselves, edit their XP, read another user's tasks, write logs for someone else, call admin functions or change announcements, while an admin could do all of these.
-
-## Troubleshooting
-
-| Problem | Fix |
-| --- | --- |
-| Yellow "Supabase is not configured" bar | Fill in `js/config.js` (local) or the Netlify environment variables (deployed). |
-| "Profile not found" after login | `schema.sql` was run after you signed up. Re-run the backfill part (section 6 of the file), or sign up again. |
-| Cannot log in after signup | Email confirmation is on. Click the link in the email, or turn **Confirm email** off while testing. |
-| Admin link missing | Run the `update public.profiles set role = 'admin' ...` query with the exact email you signed up with, then reload. |
-| Tasks do not update live | Check the three `alter publication supabase_realtime add table ...` lines in `schema.sql` ran without error. |
-| Re-running `schema.sql` errors | It is meant to run once on a fresh project. To reset, drop the `public` tables first. |
-
-## Known limits
-
-- The **Pro plan** on the landing page is a design placeholder: there is no payment system, and the free plan's "3 sessions/day" limit is not enforced. Remove or build these before launch.
-- A focus session is saved only when the timer finishes. Reloading the page during a session resets that timer.
-- "Today" tasks are those planned for today, plus unfinished ones planned for earlier days.
+All rights reserved. Please contact the author before reusing the code or design.

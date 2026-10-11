@@ -1,6 +1,6 @@
 # FocusLab
 
-**Experiment with your focus.**
+**Your Focus Partner.**
 
 FocusLab is a productivity app where you can,Plan your day, run focus sessions, and watch a small garden grow as you build consistent habits. It is part task manager, part Pomodoro timer, and part personal lab where you can test what actually helps you concentrate.
 
@@ -126,7 +126,3 @@ Ten core tables: `profiles`, `tasks`, `focus_sessions`, `daily_goals`, `garden_p
 ## Author
 
 Built by **Sadhvi Shastry**.
-
-## License
-
-All rights reserved. Please contact the author before reusing the code or design.

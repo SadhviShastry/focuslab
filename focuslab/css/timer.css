@@ -1,0 +1,34 @@
+/* timer.css — focus timer page */
+
+.timer-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.1rem; align-items: start; }
+.timer-card { text-align: center; padding: 2rem 1.5rem; }
+
+.mode-tabs { display: inline-flex; background: var(--sage-100); border-radius: 999px; padding: 4px; margin-bottom: 1.6rem; }
+.mode-tab { border: none; background: transparent; padding: .45rem 1.1rem; border-radius: 999px; color: var(--muted); font-weight: 500; font-size: .88rem; }
+.mode-tab.active { background: var(--paper); color: var(--forest); box-shadow: var(--shadow); }
+
+.ring { position: relative; width: 260px; height: 260px; margin: 0 auto 1.5rem; }
+.ring svg { transform: rotate(-90deg); width: 100%; height: 100%; }
+.ring .track { stroke: var(--sage-100); }
+.ring .progress { stroke: var(--leaf); transition: stroke-dashoffset .5s linear; stroke-linecap: round; }
+.ring .readout { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.ring .time { font-family: var(--font-serif); font-size: 3.4rem; font-weight: 600; color: var(--forest); line-height: 1; font-variant-numeric: tabular-nums; }
+.ring .mode-label { color: var(--muted); margin-top: .4rem; font-size: .9rem; }
+
+.controls { display: flex; justify-content: center; gap: .7rem; flex-wrap: wrap; }
+.controls .btn-primary { min-width: 130px; }
+
+.cycle-dots { display: flex; justify-content: center; gap: .45rem; margin-top: 1.3rem; }
+.cycle-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--sage-200); }
+.cycle-dots span.on { background: var(--forest); }
+
+.today-sessions { list-style: none; margin: 0; padding: 0; }
+.today-sessions li { display: flex; justify-content: space-between; padding: .5rem 0; border-bottom: 1px solid var(--line); font-size: .9rem; }
+.today-sessions li:last-child { border-bottom: none; }
+
+.rating { display: flex; gap: .4rem; justify-content: center; margin: .8rem 0 1.2rem; }
+.rating button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); color: var(--muted); font-weight: 600; }
+.rating button.on { background: var(--forest); color: #f6f4ea; border-color: var(--forest); }
+
+@media (max-width: 900px) { .timer-wrap { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .ring { width: 220px; height: 220px; } .ring .time { font-size: 2.8rem; } }

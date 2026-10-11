@@ -1,0 +1,30 @@
+/* responsive.css — tablet and phone layout adjustments (loaded last) */
+
+@media (max-width: 1000px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .app-layout { grid-template-columns: 1fr; }
+  .sidebar {
+    position: fixed; left: 0; top: 0; z-index: 120; width: 260px; transform: translateX(-100%);
+    transition: transform .25s ease; box-shadow: 0 0 40px rgba(0, 0, 0, .2);
+  }
+  .sidebar.open { transform: none; }
+  .mobilebar {
+    display: flex; align-items: center; justify-content: space-between; padding: .7rem 1rem;
+    background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 60;
+  }
+  .mobilebar .brand { padding: 0; font-size: 1.15rem; }
+  .content { padding: 1.4rem 1rem 3rem; }
+  .scrim { position: fixed; inset: 0; background: rgba(20, 30, 22, .4); z-index: 110; }
+}
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.6rem; }
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .page-head { align-items: flex-start; }
+  .stats-row { grid-template-columns: repeat(2, 1fr) !important; }
+}

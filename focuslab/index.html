@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FocusLab — Experiment with your focus</title>
+  <meta name="description" content="FocusLab helps you build better habits, stay consistent, and turn your time into real progress.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="landing">
+
+  <header class="wrap l-nav">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="">FOCUSLAB</a>
+    <nav class="l-links" aria-label="Main">
+      <a href="#top" class="active">Home</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="l-actions" id="navActions">
+      <a class="login" href="login.html">Log In</a>
+      <a class="btn btn-primary" href="signup.html">Get Started</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="wrap l-hero">
+      <div>
+        <div class="eyebrow">Your personal productivity lab</div>
+        <h1>Experiment with<br>your focus.</h1>
+        <p>FocusLab helps you build better habits, stay consistent, and turn your time into real progress.</p>
+        <a class="btn btn-primary" href="signup.html">Start Your Journey <span id="arrowIcon"></span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="win" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4efd4"/><stop offset="1" stop-color="#cfdcb9"/></linearGradient>
+          </defs>
+          <rect width="400" height="300" fill="url(#win)"/>
+          <rect x="190" y="20" width="170" height="170" rx="6" fill="#eef1d9" opacity=".7"/>
+          <path d="M275 20v170M190 105h170" stroke="#d6dcc0" stroke-width="3"/>
+          <rect x="0" y="228" width="400" height="72" fill="#b98a55"/>
+          <rect x="0" y="228" width="400" height="6" fill="#a37744"/>
+          <!-- books -->
+          <rect x="70" y="196" width="130" height="16" rx="2" fill="#7f9a6c"/>
+          <rect x="76" y="180" width="118" height="16" rx="2" fill="#5f7f55"/>
+          <rect x="82" y="164" width="106" height="16" rx="2" fill="#90a67c"/>
+          <rect x="70" y="212" width="132" height="16" rx="2" fill="#3f6247"/>
+          <!-- plant -->
+          <path d="M135 164c-22-14-26-42-18-60 18 10 28 30 18 60Z" fill="#6b8f5e"/>
+          <path d="M135 164c18-10 36-30 30-54-18 8-34 28-30 54Z" fill="#4f7345"/>
+          <path d="M135 164c-4-26-2-48 6-66 10 18 8 44-6 66Z" fill="#7fa070"/>
+          <path d="M112 164h46l-5 28h-36z" fill="#e6e1d2"/>
+          <!-- mug -->
+          <rect x="268" y="196" width="46" height="34" rx="6" fill="#4f7345"/>
+          <path d="M314 204c14 0 14 18 0 18" fill="none" stroke="#4f7345" stroke-width="5"/>
+          <!-- lamp -->
+          <path d="M330 232v-70" stroke="#5f7f55" stroke-width="4"/>
+          <path d="M310 162a22 18 0 0 1 44 0z" fill="#6b8f5e"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="wrap l-features" id="features">
+      <div class="l-feature"><div class="ico" data-icon="timer"></div><h3>Focus Timer</h3><p>Customize your sessions and find your perfect rhythm.</p></div>
+      <div class="l-feature"><div class="ico" data-icon="tasks"></div><h3>Task Management</h3><p>Organize, prioritize and get things done.</p></div>
+      <div class="l-feature"><div class="ico" data-icon="flask"></div><h3>Focus Experiments</h3><p>Try different techniques and discover what works for you.</p></div>
+      <div class="l-feature"><div class="ico" data-icon="chart"></div><h3>Progress Insights</h3><p>Track your focus, habits and growth over time.</p></div>
+      <div class="l-feature"><div class="ico" data-icon="leaf"></div><h3>Grow Your Garden</h3><p>Every session helps your plant grow and bloom.</p></div>
+    </section>
+
+    <!-- About -->
+    <section class="wrap l-about" id="about">
+      <div class="mock" aria-hidden="true">
+        <div class="mock-side"><b>FOCUSLAB</b><span class="on">Home</span><span>Timer</span><span>Tasks</span><span>Garden</span><span>Insights</span><span>Achievements</span><span>Settings</span></div>
+        <div class="mock-main">
+          <div class="mock-box"><h5>Today's Focus</h5><div class="mock-ring">25:00</div></div>
+          <div class="mock-box"><h5>Today's Tasks</h5><ul><li><i></i>Complete assignment</li><li><i></i>Study for exam</li><li><i></i>Work on portfolio</li><li><i></i>Read chapter 4</li></ul></div>
+          <div class="mock-box mock-wide"><h5>Your Garden</h5><div class="mock-plants" id="mockPlants"></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow">About FocusLab</div>
+        <h2>More than a timer,<br>it's your growth companion.</h2>
+        <p>FocusLab helps you build better habits, stay consistent and turn your focus into something beautiful. With every session, your progress grows — a reminder that progress, no matter how small, is still progress.</p>
+        <a class="link-arrow" href="signup.html">Learn More <span id="arrowIcon2"></span></a>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="wrap l-plans" id="pricing">
+      <div>
+        <div class="eyebrow">Our plans</div>
+        <h2>Simple plans for a focused you.</h2>
+        <p class="muted">Start free. Upgrade when you're ready.</p>
+      </div>
+      <div class="plan">
+        <div><h3>Free</h3><span class="muted small">Perfect to get started</span></div>
+        <div class="price">$0 <small>/ month</small></div>
+        <ul>
+          <li data-check>Up to 3 focus sessions/day</li>
+          <li data-check>Task management</li>
+          <li data-check>Basic garden &amp; progress tracking</li>
+          <li data-check>Light &amp; dark mode</li>
+        </ul>
+        <a class="btn btn-outline btn-block" href="signup.html">Get Started</a>
+      </div>
+      <div class="plan pro">
+        <span class="tag">Most Popular</span>
+        <div><h3>Pro</h3><span class="muted small">For serious focus growers</span></div>
+        <div class="price">$2.99 <small>/ month</small></div>
+        <ul>
+          <li data-check>Unlimited focus sessions</li>
+          <li data-check>Advanced statistics &amp; insights</li>
+          <li data-check>All achievements &amp; badges</li>
+          <li data-check>Custom timers &amp; themes</li>
+          <li data-check>Priority support</li>
+        </ul>
+        <a class="btn btn-primary btn-block" href="signup.html">Go Pro</a>
+      </div>
+    </section>
+
+    <!-- Habit strip -->
+    <section class="wrap">
+      <div class="l-strip">
+        <div class="t">Small habits<br>create big results.</div>
+        <div class="flow" id="flow"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="l-footer">
+    <div class="wrap">
+      <div class="cols">
+        <div><a class="brand" href="index.html" style="display:flex"><img src="assets/logo.svg" alt="" style="filter:brightness(0) invert(.92)">FOCUSLAB</a><span>Experiment with your focus.</span></div>
+        <div><h4>Quick Links</h4><a href="#top">Home</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#about">About</a></div>
+        <div><h4>Account</h4><a href="login.html">Log in</a><a href="signup.html">Create an account</a></div>
+      </div>
+      <div class="copy">&copy; <span id="yr"></span> FocusLab. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Decorate the static landing page with the shared icon + plant helpers.
+    document.querySelectorAll("[data-icon]").forEach(function (el) { el.innerHTML = FL.icon(el.dataset.icon); });
+    document.querySelectorAll("[data-check]").forEach(function (el) { el.insertAdjacentHTML("afterbegin", FL.icon("check")); });
+    document.getElementById("arrowIcon").innerHTML = FL.icon("arrow");
+    document.getElementById("arrowIcon2").innerHTML = FL.icon("arrow");
+    document.getElementById("yr").textContent = new Date().getFullYear();
+
+    var names = ["Seed", "Sprout", "Plant", "Tree", "Bloom"];
+    document.getElementById("mockPlants").innerHTML = names.map(function (n, i) {
+      return "<div>" + FL.plantSVG(i, 40) + "<div>" + n + "</div></div>";
+    }).join("");
+
+    var flow = [["Focus<br>Session", 1], ["+XP", 2], ["Grow", 3], ["Bloom", 4]];
+    document.getElementById("flow").innerHTML = flow.map(function (f, i) {
+      return (i ? '<span class="arrow">' + FL.icon("arrow") + "</span>" : "") +
+        '<div class="step">' + FL.plantSVG(f[1], 36) + "<div>" + f[0] + "</div></div>";
+    }).join("");
+
+    // If already logged in, show a Dashboard button instead of Log In / Get Started.
+    if (window.FOCUSLAB_CONFIGURED) {
+      sb.auth.getSession().then(function (r) {
+        if (r.data.session) {
+          document.getElementById("navActions").innerHTML = '<a class="btn btn-primary" href="dashboard.html">Open Dashboard</a>';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

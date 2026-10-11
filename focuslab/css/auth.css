@@ -1,0 +1,23 @@
+/* auth.css — login and signup pages */
+
+.auth-page { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.auth-side {
+  background: var(--forest); color: #f1efe2; padding: 3rem; display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+.auth-side .brand { color: #f1efe2; padding: 0; }
+.auth-side h2 { color: #f6f4ea; font-size: 2.2rem; margin-bottom: .8rem; }
+.auth-side p { color: #c9d6bb; max-width: 380px; }
+.auth-side .leaf-deco { position: absolute; right: -40px; bottom: -30px; opacity: .14; width: 320px; }
+.auth-form-wrap { display: grid; place-items: center; padding: 2rem 1.2rem; }
+.auth-form { width: 100%; max-width: 400px; }
+.auth-form h1 { margin-bottom: .3rem; }
+.auth-form > p { color: var(--muted); margin-bottom: 1.6rem; }
+.auth-foot { text-align: center; margin-top: 1.2rem; color: var(--muted); font-size: .9rem; }
+.auth-foot a { font-weight: 600; text-decoration: underline; }
+.back-link { display: inline-block; margin-bottom: 1.6rem; color: var(--muted); font-size: .88rem; }
+
+@media (max-width: 800px) {
+  .auth-page { grid-template-columns: 1fr; }
+  .auth-side { display: none; }
+}

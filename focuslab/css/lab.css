@@ -1,0 +1,40 @@
+/* lab.css — Lab overview, Garden, Experiments and Progress pages */
+
+.lab-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+.lab-card { display: flex; flex-direction: column; gap: .6rem; text-decoration: none !important; color: inherit; transition: transform .18s, box-shadow .18s; }
+.lab-card:hover { transform: translateY(-2px); }
+.lab-card .ach-icon { margin-bottom: .3rem; }
+.lab-card .go { margin-top: auto; color: var(--forest); font-weight: 500; font-size: .9rem; display: inline-flex; gap: .4rem; align-items: center; }
+
+/* garden */
+.garden-hero { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: center; }
+.garden-hero .big-plant { background: var(--sage-50); border-radius: var(--radius); padding: 1rem; display: grid; place-items: center; }
+.garden-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: .8rem; margin-top: 1.2rem; }
+.stage-tile { text-align: center; padding: .9rem .4rem; border-radius: var(--radius-sm); border: 1px solid var(--line); background: var(--paper); }
+.stage-tile.reached { background: var(--sage-50); border-color: var(--sage-200); }
+.stage-tile.current { border-color: var(--forest); box-shadow: 0 0 0 2px rgba(36, 68, 43, .12); }
+.stage-tile.locked svg { filter: grayscale(1); opacity: .35; }
+.stage-tile .name { font-size: .8rem; font-weight: 600; color: var(--forest); margin-top: .2rem; }
+.stage-tile .xp { font-size: .72rem; color: var(--muted); }
+
+/* experiments */
+.vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-top: 1rem; }
+.variant { text-align: center; }
+.variant .mins { font-family: var(--font-serif); font-size: 2.2rem; color: var(--forest); font-weight: 600; }
+.variant.winner { border-color: var(--forest); box-shadow: 0 0 0 2px rgba(36, 68, 43, .12); }
+.variant dl { margin: .8rem 0 0; display: grid; grid-template-columns: 1fr auto; gap: .35rem .8rem; text-align: left; font-size: .88rem; }
+.variant dt { color: var(--muted); }
+.variant dd { margin: 0; font-weight: 600; }
+.exp-item { display: flex; justify-content: space-between; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--line); }
+.exp-item:last-child { border-bottom: none; }
+
+/* progress */
+.progress-rows { display: flex; flex-direction: column; gap: 1rem; }
+.progress-rows .row-top { display: flex; justify-content: space-between; font-size: .9rem; margin-bottom: .35rem; }
+
+@media (max-width: 900px) {
+  .lab-cards { grid-template-columns: 1fr; }
+  .garden-hero { grid-template-columns: 1fr; }
+  .garden-row { grid-template-columns: repeat(5, minmax(86px, 1fr)); overflow-x: auto; }
+  .vs-grid { grid-template-columns: 1fr; }
+}

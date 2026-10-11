@@ -126,7 +126,3 @@ Ten core tables: `profiles`, `tasks`, `focus_sessions`, `daily_goals`, `garden_p
 ## Author
 
 Built by **Sadhvi Shastry**.
-
-## License
-
-All rights reserved. Please contact the author before reusing the code or design.
